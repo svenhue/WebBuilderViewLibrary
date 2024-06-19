@@ -13,16 +13,20 @@ import { IViewConfiguration } from 'alphautils';
 const props = defineProps({
     viewId: {
         type: Number,
-        required: true,
+        required: false,
     },
     contextid: {
         type: Number,
-        required: true,
+        required: false,
+    },
+    view: {
+        type: Object as () => IViewConfiguration,
+        required: false
     }
 })
 
 const viewRef = ref<InstanceType<typeof QBtn>>(null);
-const {view } = useViewConfiguration(props.contextid, props.viewId) as MaybeRefOrGetter<[ MaybeRefOrGetter<IViewConfiguration>, MaybeRefOrGetter<Array<IViewConfiguration>>]>
+const {view } = useViewConfiguration(props.contextid, props.viewId, props.view) as MaybeRefOrGetter<[ MaybeRefOrGetter<IViewConfiguration>, MaybeRefOrGetter<Array<IViewConfiguration>>]>
 const viewelement = new ViewElement<typeof QBtn>(view);
 
 onMounted(() => {

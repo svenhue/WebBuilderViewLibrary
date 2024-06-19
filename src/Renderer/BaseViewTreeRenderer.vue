@@ -31,6 +31,7 @@ export default {
         if(resolver == undefined){
             resolver = new BaseComponentResolver();
         }
+
         const {service, context} = BaseServiceProvider.ServiceWithAppContext<IExecutionContextProvider>("ExecutionContextProvider", contextid);
         return BaseVueRenderer(defaulttag,  contextid, view, resolver, service) 
     }

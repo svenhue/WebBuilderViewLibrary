@@ -7,6 +7,7 @@ import { IViewConfiguration, IBOInstance } from 'alphautils';
 import { BaseServiceProvider } from 'alphautils';
 import { set } from 'lodash-es'
 import { getCurrentInstance } from "vue";
+import { IPageConfiguration } from "alphautils/view/IPageConfiguration.ts";
 /*
 import { StateChangeTypes } from 'alphautils/data/Repositorys/StateChangeTypes.ts';
 import { DataAdapter } from 'alphautils/data/DataAdapters/DataAdapter.ts';
@@ -37,16 +38,29 @@ export class UITreeProviderService extends BaseServiceProvider{
         }
         if(Array.isArray(initialView)){
             this.flatViews.value.push(...initialView)
-        }else if(initialView.views != undefined){
-            this.flatViews.value.push(initialView, ...initialView.views)
+            this.AddNestedChildren(initialView)
+            //todo destructure nested children?
+        }else if(initialView.children != undefined){
+
+            this.flatViews.value.push(initialView)
+            this.AddNestedChildren([initialView])
         }else{
             this.flatViews.value.push(initialView)
         }
         if(this.flatViews.value == undefined){
             this.flatViews.value = []
         }
+        
 
         
+    }
+    private AddNestedChildren(views: Array<IViewConfiguration | IPageConfiguration>){
+        for(const view of views){
+            if(view.children != undefined){
+                this.flatViews.value.push(...view.children)
+                this.AddNestedChildren(view.children)
+            }
+        }
     }
     public GetRootView(): Ref<IViewConfiguration>{
         return computed(() => {
