@@ -312,9 +312,9 @@
                     "template": "viewtemplate:Navigation:NavBarComponent"
                 },
                 {
-                    "type": "viewdefinition:Media:ImageComponent",
-                    "name": "Image Component",
-                    "tag": "component:ImageComponent",
+                    "type": "viewdefinition:Media:IconComponent",
+                    "name": "Icon Component",
+                    "tag": "component:IconComponent",
                     "position": 1,
                     "style":{
                         "width": "50px",
@@ -330,7 +330,7 @@
         {
 
             "type": "viewtemplate:Navigation:DropdownMenuComponent",
-            "tag": "component:ButtonComponent",
+            "tag": "component:DropdownMenuComponent",
             "style":{
                 "min-width": "100px",
                 "height": "min-content"
@@ -346,6 +346,7 @@
                 {
                     "tag": "component:DropdownMenuComponent",
                     "type": "viewdefinition:Navigation:DropdownMenuComponent",
+                    "skipTemplate": true,
                     "style":{
                       "height": "min-content",
                       "min-height": "30px"

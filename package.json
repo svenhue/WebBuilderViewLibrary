@@ -1,17 +1,17 @@
 {
-  "name": "@svenhue/alphaviewlibrary",
-  "version": "1.0.3",
+  "name": "alphaviewlibrary",
+  "version": "1.0.5",
   "type": "module",
   "main": "index.ts",
   "types": "./index.d.ts",
   "module": "index.ts",
   "target": "esnext",
   "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
-    },
-    "repository": {
-        "url": "https://github.com/svenhue/WebBuilderViewLibrary.git"
-    },
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "url": "https://github.com/svenhue/WebBuilderViewLibrary.git"
+  },
   "scripts": {
     "build": "vite build",
     "lint": "eslint --ext .js,.ts,.vue ./",
@@ -38,18 +38,17 @@
   "devDependencies": {
     "@types/mocha": "latest",
     "@types/node": "latest",
-    "alphautils": "https://github.com/svenhue/WebBuilderUtils.git",
     "mocha": "latest",
     "sass": "^1.72.0",
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "@svenhue/alphautils": "^1.0.4",
     "@typescript-eslint/eslint-plugin": "^6.17.0",
     "@typescript-eslint/parser": "^6.17.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/compiler-sfc": "^3.3.8",
     "@vueuse/core": "^10.4.1",
+    "alphautils": "file:../Utils",
     "axios": "^1.4.0",
     "babel-eslint": "^10.1.0",
     "codemirror-editor-vue3": "^2.4.1",

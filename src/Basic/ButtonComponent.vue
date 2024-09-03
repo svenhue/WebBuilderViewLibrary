@@ -2,7 +2,7 @@
     <q-btn 
     dense
     :class="view?.class"
-    :label="view?.content?.label ?? 'Button'"
+    :label="view?.content ?? 'Button'"
     ref="viewRef"
     :icon="view?.content?.iconName"
     :flat="view?.properties?.flat ?? false"

@@ -99,7 +99,6 @@ export class UITreeProviderService extends BaseServiceProvider{
     private HandleStateChange(id:number, newValue: IBOInstance, changeType: StateChangeTypes){
         if(changeType == StateChangeTypes.create){
             const view = newValue as IViewConfiguration
-
             this.flatViews.value.push(view)
         }
         if(changeType == StateChangeTypes.delete){

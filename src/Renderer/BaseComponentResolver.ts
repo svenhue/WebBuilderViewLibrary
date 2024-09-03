@@ -20,9 +20,11 @@ export class BaseComponentResolver implements IComponentResolver{
         const importPath = '../../index.ts' //'alphaviewlibrary'
         if(node.tag?.startsWith('component:')){
             let component = undefined //defineAsyncComponent(() =>  import(/* @vite-ignore */  'alphaviewlibrary').catch(e => console.log(e)).then(m => m[componentName]))
+           
             if(component == undefined){
-      component = defineAsyncComponent(() =>  import(/* @vite-ignore */  '../../index.ts').catch(e => console.log("Import Error", e)).then(m => m[componentName]))
+                component = defineAsyncComponent(() =>  import(/* @vite-ignore */  '../../index.ts').catch(e => console.log("Import Error", node.tag)).then(m => m[componentName]))
             }
+    
             return component;
         }
 

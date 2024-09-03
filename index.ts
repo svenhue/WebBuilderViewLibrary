@@ -1,4 +1,4 @@
-import 'reflect-metadata'
+//import 'reflect-metadata'
 import DefaultRootComponent from './src/Application/DefaultApplicationRootComponent.vue'
 import ButtonComponent from './src/Basic/ButtonComponent.vue'
 import DivBlockComponent from './src/Basic/DivBlockComponent.vue'
