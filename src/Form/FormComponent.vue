@@ -35,9 +35,9 @@ const props = defineProps({
 const viewRef = ref(null)
 const {view, children} = useViewConfiguration(props.contextid, props.viewId) as [ MaybeRefOrGetter<IViewConfiguration>, MaybeRefOrGetter<Array<IViewConfiguration>>]
 
-const viewElement = new FormViewElement(view);
+const viewElement = new FormViewElement(view, viewRef);
 
-new FormViewModel(viewElement.GetConfiguration(), viewRef)
+new FormViewModel(viewElement.GetConfiguration())
 
 onMounted(() => {
     viewElement.bind(props.contextid);

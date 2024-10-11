@@ -32,14 +32,14 @@ export class UITreeProviderService extends BaseServiceProvider{
         this.contextid = contextid;
         const instance = getCurrentInstance()
         instance.appContext.app.provide('viewGetter_' + this.contextid,  (id: number ) => this.Getter(id))
-        //provide('viewGetter_' + this.contextid,  (id: number ) => this.Getter(id))
+       
         if(initialView == undefined){
             return
         }
         if(Array.isArray(initialView)){
             this.flatViews.value.push(...initialView)
             this.AddNestedChildren(initialView)
-            //todo destructure nested children?
+         
         }else if(initialView.children != undefined){
 
             this.flatViews.value.push(initialView)
@@ -47,13 +47,24 @@ export class UITreeProviderService extends BaseServiceProvider{
         }else{
             this.flatViews.value.push(initialView)
         }
+
+        //if its a page add the child views
+        for(const view of this.flatViews.value){
+            if(view?.views != undefined){
+                for(const v in view.views){
+                    this.flatViews.value.push(view.views[v])
+                }
+                view.views = undefined;
+            }
+        }
+
         if(this.flatViews.value == undefined){
             this.flatViews.value = []
         }
-        
-
-        
+                
     }
+
+    // children are ROUTABLE views
     private AddNestedChildren(views: Array<IViewConfiguration | IPageConfiguration>){
         for(const view of views){
             if(view.children != undefined){
@@ -67,6 +78,7 @@ export class UITreeProviderService extends BaseServiceProvider{
             return this.flatViews.value.find(v => v.isRoot == true)
         })
     }
+    //todo make this more performant!?
     public Getter(id: number){
         const view = computed(() => {
             return this.flatViews.value.find(v => v.id == id)

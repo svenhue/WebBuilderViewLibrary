@@ -8,8 +8,8 @@
     :max="view?.properties?.max"
     :readonly="view?.properties?.readonly"
     :disable="view?.properties?.disable"
-    @update:model-value="(val) => viewModel.PartialUpdate(view, {key:'content.value', value:val})"
-    :model-value="view.content?.value ?? 0">
+    @update:model-value="(val) => viewModel.PartialUpdate(view, {key:'content', value:val})"
+    :model-value="view?.content ?? 0">
 
     </q-rating>
 </template>

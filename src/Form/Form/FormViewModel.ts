@@ -13,7 +13,7 @@ export class FormViewModel extends BaseViewModel{
 
     }
     public SetValue(key: string, value: string | number | boolean){
-        console.log(key, value)
-        this.dataAdapter.UpdatePartial(this.selfId, {keyValuePairs: [{key: `content.${key}`, value: value}]}, this.sessioncontextid)
+        
+        this.dataAdapter.UpdatePartial(this.selfId, {keyValuePairs: [{key: `modelValue.${key}`, value: value}]}, this.sessioncontextid)
     }
 }

@@ -1,10 +1,12 @@
 <template>
     <q-btn 
     dense
+    no-caps
+    :align="view?.properties?.align"
     :class="view?.class"
-    :label="view?.content ?? 'Button'"
+    :label="t(view?.content ?? 'Button')"
     ref="viewRef"
-    :icon="view?.content?.iconName"
+    :icon="view?.iconName"
     :flat="view?.properties?.flat ?? false"
     :style="view.style"
     v-bind="view?.htmlattributes"
@@ -26,6 +28,8 @@ import { ref, onMounted, onBeforeUnmount, MaybeRefOrGetter } from 'vue';
 import { QBtn } from 'quasar';
 import { IViewConfiguration } from 'alphautils';
 import  BaseViewTreeRenderer  from '../Renderer/BaseViewTreeRenderer.vue';
+import { useI18n } from 'vue-i18n'
+
 const props = defineProps({
     viewId: {
         type: Number,
@@ -36,9 +40,13 @@ const props = defineProps({
         required: true,
     }
 })
+const { t } = useI18n();
+
 const viewRef = ref<InstanceType<typeof QBtn>>(null);
 const {view, children } = useViewConfiguration(props.contextid, props.viewId) as MaybeRefOrGetter<[ MaybeRefOrGetter<IViewConfiguration>, MaybeRefOrGetter<Array<IViewConfiguration>>]>
-    const viewelement = new ViewElement<typeof QBtn>(view);
+const viewelement = new ViewElement<typeof QBtn>(view);
+
+
 onMounted(() => {
     viewelement.bind(props.contextid, viewRef);
 })

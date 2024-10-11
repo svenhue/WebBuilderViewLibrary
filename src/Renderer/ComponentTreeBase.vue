@@ -45,4 +45,6 @@ const props = defineProps({
 
 const service = new UITreeProviderService(props.contextid, props.view)
 service.subscribeToViewContextChanges(props.contextid)
+
+
 </script>

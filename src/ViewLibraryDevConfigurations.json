@@ -419,6 +419,31 @@
                 },
                 {
                     "level": "ui",
+                    "name": "ComponentMethods",
+                    "value": 
+                    [
+                        {
+                            "name": "Submit"
+                        },
+                        {
+                            "name": "Clear"
+                        },
+                        {
+                            "name": "Clear validation"
+                        },
+                        {
+                            "name": "Reset"
+                        },
+                        {
+                            "name": "Validate"
+                        },
+                        {
+                            "name": "Set Data"
+                        }
+                    ]
+                },
+                {
+                    "level": "ui",
                     "name": "CustomEvents",
                     "value": [
                         {

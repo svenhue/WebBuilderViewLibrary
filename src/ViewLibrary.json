@@ -40,18 +40,15 @@
       "class": "FormViewElement",
       "tag": "component:FormComponent",
       "type": "viewdefinition:Form:FormComponent",
-      "htmlattributes": {
-        "label": "Form",
+      "modelValue":{
+
+      },
         "style":{
           "width": "100%",
           "height": "100%",
           "margin-Top": "0px"
         }
-      },
-      "viewModelUsageOptions": {
-        "injectionType": "scoped",
-        "viewModel": "FormViewModel"
-      }
+      
     },
     {
       "name": "Icon",
@@ -169,11 +166,7 @@
       "properties":{
         "showLabelInField": false,
         "rules":[
-          {
-            "name": "required",
-            "errorMessage": "This field is required",
-            "rule": "{{ 1 == 2 }}"
-          }
+
         ]
 
       },
@@ -552,9 +545,7 @@
       "icon": "Button.svg",
       "tag": "component:ButtonComponent",
       "type": "viewdefinition:Basic:ButtonComponent",
-      "properties":{
-        "label": "Button"
-      },
+      "content":"Button",
       "htmlattributes": {
         
       }

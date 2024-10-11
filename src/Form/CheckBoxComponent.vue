@@ -1,13 +1,13 @@
 <template>
     <q-checkbox 
-    :left-label="view.properties?.label"
+    
     v-bind="view.htmlattributes" 
-    :model-value="view.content?.value ?? false"
-    @update:model-value="(val) => viewModel.PartialUpdate(view, {key:'content.value', value:val})"
+    :model-value="view?.modelValue ?? false"
+    @update:model-value="(val) => viewModel.PartialUpdate(view, {key:'modelValue', value:val})"
     :checked-icon="view.properties?.checkedIcon"
     :unchecked-icon="view.properties?.uncheckedIcon"
     :name="view.properties?.name"
-    :label="view.properties?.label"
+    :label="view.content.label"
     :disable="view.properties?.disbale"
     :size="view.properties?.size"
     :dense="view.properties?.dense"

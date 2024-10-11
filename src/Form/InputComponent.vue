@@ -4,10 +4,10 @@
     dense
     :type="view.content.dataType ?? 'text'"
     :label="view.properties?.showLabelInInput == true ? viewElement.ResolveTemplateProperty(view.content.label) : undefined" 
-    :model-value="view.content.value" 
+    :model-value="view.modelValue" 
     v-bind="view.htmlattributes"
     :rules="viewElement.ValidateRules()"
-    @update:model-value="(value) => { viewModel.PartialUpdate(view, {key:'content.value', value:value}), formViewModel != undefined ? formViewModel.SetValue(`${view.content.label?.replace(/\s/g, '').toLowerCase()}`, value) : null}"
+    @update:model-value="(value) => { viewModel.PartialUpdate(view, {key:'modelValue', value:value}), formViewModel != undefined ? formViewModel.SetValue(`${view.content.label?.replace(/\s/g, '').toLowerCase()}`, value) : null}"
     >
     <template v-if="view.properties.showLabelInInput != true" v-slot:before>
         {{  viewElement.ResolveTemplateProperty(view.content.label) }}
@@ -36,7 +36,7 @@ const props = defineProps({
 const { view } = useViewConfiguration(props.contextid, props.viewId) as { view: InputView }
 const viewElement = new ValueValidationViewElement(view);
 const viewModel = new BaseViewModel(viewElement.GetConfiguration().contextid);
-console.log(viewElement.ValidateRules())
+
 const formViewModel = inject('form', undefined) as FormViewModel;
 
 onMounted(() => {
