@@ -1,6 +1,6 @@
 <template>
-    <blockquote v-bind="view.htmlattributes" :style="view?.style" ref="viewRef">
-        {{ view.content }}
+    <blockquote v-bind="view.htmlattributes" :style="view?.style" ref="viewRef" textnode   v-html="t(view?.content?.text)">
+        
     </blockquote>
 </template>
 
@@ -9,7 +9,7 @@
 
 import { ViewElement, useViewConfiguration } from 'alphautils';
 import { onMounted, ref, onUnmounted } from 'vue';
-
+import { useI18n } from "vue-i18n"
 const props = defineProps({
     viewId: {
         type: Number,
@@ -20,7 +20,7 @@ const props = defineProps({
         required: true
     }
 })
-
+const {t } = useI18n();
 const viewRef = ref<HTMLElement | null>(null);
 
 const { view } = useViewConfiguration(props.contextid, props.viewId);

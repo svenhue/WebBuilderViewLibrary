@@ -68,9 +68,10 @@ function updateValue() {
 
 <style lang="scss">
 .code-editor{
-    
+    min-height: 300px;
     .monaco-editor{
-        
+        min-height: 300px
+
     }
 }
 

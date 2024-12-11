@@ -6,7 +6,7 @@
         :model-value="value"
         @update:model-value="(val) => UpdateValue(val)"
         >
-            <template v-slot:before v-if="label != undefined ">
+            <template v-slot:before>
                 <div class="editor-input-label"> {{ label }} </div>
                 <q-select v-if="mode != 'onlyExpression'" dense :options="options" :model-value="selectModel" @update:model-value="updateExpression">
 

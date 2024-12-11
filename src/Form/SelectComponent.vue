@@ -2,13 +2,17 @@
     <q-select 
     :rules="viewElement.ValidateRules()"
     dense
-    :label="viewElement.ResolveTemplateProperty(view.content.label)" 
-    :model-value="view.content?.value ?? view.content?.defaultValue ?? ''"
-    @update:model-value="(val) => viewModel.PartialUpdate(view, {key:'content.value', value:val})"
+   
+    :label="t(viewElement.ResolveTemplateProperty(view.content.label))" 
+    :model-value="view.modelValue ?? ''"
+    @update:model-value="(val) => viewModel.PartialUpdate(view, {key:'modelValue', value:val})"
     :options="view.content?.options ?? []"
     v-bind="view.htmlattributes">
-        <template v-if="view.properties.showLabelInInput != true" v-slot:before>
-            {{  viewElement.ResolveTemplateProperty(view.content.label) }}
+
+        <template v-if="view.properties.showLabelBefore == true" v-slot:before >
+            <span  textnode>
+                {{  t(viewElement.ResolveTemplateProperty(view.content.label)) }}
+            </span>
         </template>
     </q-select>
 </template>
@@ -19,7 +23,7 @@
 
 import { BaseViewModel, ValueValidationViewElement, useViewConfiguration } from 'alphautils';
 import { onMounted, onUnmounted } from 'vue';
-
+import { useI18n } from 'vue-i18n'
 const props = defineProps({
     viewId: {
         type: Number,
@@ -30,7 +34,7 @@ const props = defineProps({
         required: true,
     }
 })
-
+const { t } = useI18n()
 const { view } = useViewConfiguration(props.contextid, props.viewId)
 
 const viewElement = new ValueValidationViewElement(view)

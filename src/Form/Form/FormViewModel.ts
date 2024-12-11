@@ -5,6 +5,7 @@ export class FormViewModel extends BaseViewModel{
     private selfId: number;
     sessioncontextid: number;
     dataAdapter: IDataAdapter
+    
     constructor(config: IViewConfiguration){
         super(config.contextid);
         this.selfId = config.id;

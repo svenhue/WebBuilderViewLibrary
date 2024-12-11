@@ -100,6 +100,11 @@
             "type": "viewdefinition:Typography:BlockQuoteComponent",
             "definitions":[
                 {
+                    "level": "dev",
+                    "name": "contentTextAttribute",
+                    "value": "content.text"
+                },
+                {
                     "level": "info",
                     "name": "View Information",
                     "value":{

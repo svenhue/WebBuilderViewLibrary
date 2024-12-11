@@ -20,6 +20,7 @@ import { FormViewModel } from './Form/FormViewModel';
 import { MaybeRefOrGetter, onMounted, onUnmounted, ref } from 'vue';
 import { IViewConfiguration } from 'alphautils';
 import BaseViewTreeRenderer  from '../Renderer/BaseViewTreeRenderer.vue';
+import { toValue } from 'vue';
 
 
 const props = defineProps({
@@ -35,9 +36,10 @@ const props = defineProps({
 const viewRef = ref(null)
 const {view, children} = useViewConfiguration(props.contextid, props.viewId) as [ MaybeRefOrGetter<IViewConfiguration>, MaybeRefOrGetter<Array<IViewConfiguration>>]
 
-const viewElement = new FormViewElement(view, viewRef);
+const viewModel = new FormViewModel(toValue(view))
+const viewElement = new FormViewElement(view, viewRef, viewModel);
 
-new FormViewModel(viewElement.GetConfiguration())
+
 
 onMounted(() => {
     viewElement.bind(props.contextid);

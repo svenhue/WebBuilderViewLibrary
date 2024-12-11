@@ -1,11 +1,29 @@
 {
     "views":[
         {
+            "name" : "Dialog",
+            "tag" : "component:DialogComponent",
+            "type" : "viewtemplate:Basic:DialogComponent",
+            "children":[
+                {
+                    "type": "viewdefinition:Structure:ContainerComponent",
+                    "style":{
+                        "display": "flex",
+                        "flex-direction": "column",
+                        "align-items": "center",
+                        "justify-content": "center",
+                        "height": "300px",
+                        "width": "300px"
+                    }
+                }
+            ]
+          },
+        {
             "type": "viewtemplate:Basic:ListComponent",
             "children":[
                 {
                     "position": 0,
-                    "type": "viewdefinition:Basic:ListItem",
+                    "type": "viewdefinition:Basic:ListItemComponent",
                     "tag": "component:ListItemComponent",
                     "name": "List Item",
                     "icon":"ListItem.svg",
@@ -15,7 +33,7 @@
                 },
                 {
                     "position": 1,
-                    "type": "viewdefinition:Basic:ListItem",
+                    "type": "viewdefinition:Basic:ListItemComponent",
                     "tag": "component:ListItemComponent",
                     "name": "List Item",
                     "icon":"ListItem.svg",
@@ -25,7 +43,7 @@
                 },
                 {
                     "position": 2,
-                    "type": "viewdefinition:Basic:ListItem",
+                    "type": "viewdefinition:Basic:ListItemComponent",
                     "tag": "component:ListItemComponent",
                     "name": "List Item",
                     "icon":"ListItem.svg",
@@ -277,14 +295,6 @@
         },
         {
             "type": "viewtemplate:Form:FormComponent",
-            "interaction":{
-                "events":[{
-                    "type" : "Submit",
-                    "actions":[{
-                        
-                    }]
-                }]
-            },
             "children":[
                 {
                     "type": "viewdefinition:Form:InputComponent"
@@ -297,6 +307,7 @@
                 },
                 {
                     "type": "viewdefinition:Basic:ButtonComponent",
+                    "content": "Submit",
                     "interaction":{
 
                     }
@@ -333,6 +344,7 @@
             "tag": "component:DropdownMenuComponent",
             "style":{
                 "min-width": "100px",
+                "min-height": "30px",
                 "height": "min-content"
             },
             "properties":{
@@ -343,18 +355,7 @@
             },
             
             "children":[
-                {
-                    "tag": "component:DropdownMenuComponent",
-                    "type": "viewdefinition:Navigation:DropdownMenuComponent",
-                    "skipTemplate": true,
-                    "style":{
-                      "height": "min-content",
-                      "min-height": "30px"
-                    },
-                    "content":{
-                      "label": "Menu"
-                    },
-                    "children":[
+        
                         {
                             "name": "Menu Item",
                             "tag": "component:ListItemComponent",
@@ -380,19 +381,7 @@
                                 "label": "Menu Item"
                             }
                         },
-                        {
-                            "name": "Menu Item",
-                            "icon": "MenuItem.svg",
-                            "tag": "component:ListItemComponent",
-                            "type": "viewdefinition:Basic:ListItemComponent",
-                            "content":{
-                                "label": "Submenu"
-                            },
-                            "properties":{
-                                "clickable":true,
-                                "sideIcon":"keyboard_arrow_right"
-                            },
-                            "children":[
+              
                                 {
                                     "name": "Submenu",
                                     "tag": "component:DropdownMenuComponent",
@@ -423,10 +412,10 @@
                                         }
                                     ]
                                 }
-                            ]
-                        }
-                    ]
-                }
+                            
+                        
+                    
+                
              
             ]
         }

@@ -1,4 +1,4 @@
-import { Ref, computed, provide, ref } from "vue";
+import { Ref, computed, provide, ref, watch } from "vue";
 import { StateChangeTypes } from 'alphautils';
 import { DataAdapter } from 'alphautils';
 import { DataAdapterOptions } from 'alphautils';
@@ -8,6 +8,7 @@ import { BaseServiceProvider } from 'alphautils';
 import { set } from 'lodash-es'
 import { getCurrentInstance } from "vue";
 import { IPageConfiguration } from "alphautils/view/IPageConfiguration.ts";
+import { IDataAdapter } from "alphautils";
 /*
 import { StateChangeTypes } from 'alphautils/data/Repositorys/StateChangeTypes.ts';
 import { DataAdapter } from 'alphautils/data/DataAdapters/DataAdapter.ts';
@@ -20,7 +21,7 @@ import { BaseServiceProvider } from 'alphautils/services/Provider/BaseServicePro
 
 export class UITreeProviderService extends BaseServiceProvider{
 
-    private dataAdapter: DataAdapter
+    private dataAdapter: IDataAdapter
     private contextid: number
     private flatViews: Ref<Array<IViewConfiguration>> = ref<Array<IViewConfiguration>>([])
     
@@ -61,7 +62,11 @@ export class UITreeProviderService extends BaseServiceProvider{
         if(this.flatViews.value == undefined){
             this.flatViews.value = []
         }
-                
+        
+        watch(this.flatViews, (newValue) => {
+            console.log(newValue)
+        })
+        
     }
 
     // children are ROUTABLE views
@@ -84,7 +89,7 @@ export class UITreeProviderService extends BaseServiceProvider{
             return this.flatViews.value.find(v => v.id == id)
         })
         const children = computed(() => {
-            const collection = view.value.children?.find(c => c.type == 'childrenCollection')
+            const collection = view.value.children?.find(c => c?.type == 'childrenCollection')
             if(collection == undefined){
                 return []
             }
@@ -107,6 +112,7 @@ export class UITreeProviderService extends BaseServiceProvider{
         this.dataAdapter = new DataAdapter(options, contextid)
         const handler = (id: number, newValue: IBOInstance, changeType: StateChangeTypes) => this.HandleStateChange(id, newValue, changeType)
         this.dataAdapter.SetStateChangeHandler(handler)
+        
     }
     private HandleStateChange(id:number, newValue: IBOInstance, changeType: StateChangeTypes){
         if(changeType == StateChangeTypes.create){

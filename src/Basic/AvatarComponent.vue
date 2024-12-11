@@ -3,7 +3,7 @@
     :style="view?.style"
     v-bind="view?.htmlattributes"
     ref="viewRef"
-    :icon="view?.content?.icon ?? 'account_circle'" >
+    :icon="view?.properties?.icon ?? 'account_circle'" >
 
     </q-avatar>
 </template>

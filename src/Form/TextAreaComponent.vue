@@ -1,5 +1,6 @@
 <template>
     <textarea 
+    textnode
     :value="view.content?.text"
     @input="(val) => viewModel.PartialUpdate(view, {key:'content.text', value:val.target.value})"
     v-bind="view.htmlattributes"

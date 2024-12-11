@@ -7,8 +7,9 @@
     :checked-icon="view.properties?.checkedIcon"
     :unchecked-icon="view.properties?.uncheckedIcon"
     :name="view.properties?.name"
-    :label="view.content.label"
-    :disable="view.properties?.disbale"
+    textnode
+    :label="view?.content?.label"
+    :disable="view.properties?.disable ?? false"
     :size="view.properties?.size"
     :dense="view.properties?.dense"
     >

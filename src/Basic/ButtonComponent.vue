@@ -1,5 +1,6 @@
 <template>
-    <q-btn 
+    <QuasarButtonComponent
+    class="daisy-btn"
     dense
     no-caps
     :align="view?.properties?.align"
@@ -13,15 +14,9 @@
     :round="view?.appearence?.round ?? false"
     :unelevated="view?.appearence?.unelevated ?? false"
     >
-        <BaseViewTreeRenderer
-        v-for="child in children" :key="child.id"
-        :view="child"
-        :contextid="contextid"
-        >
-        </BaseViewTreeRenderer>
-    </q-btn>
+    </QuasarButtonComponent> 
 </template>
-
+//todo use my btn
 <script setup lang='ts'>
 import { ViewElement, useViewConfiguration } from 'alphautils';
 import { ref, onMounted, onBeforeUnmount, MaybeRefOrGetter } from 'vue';
@@ -29,7 +24,7 @@ import { QBtn } from 'quasar';
 import { IViewConfiguration } from 'alphautils';
 import  BaseViewTreeRenderer  from '../Renderer/BaseViewTreeRenderer.vue';
 import { useI18n } from 'vue-i18n'
-
+import QuasarButtonComponent from '../quasar/QuasarButtonComponent';
 const props = defineProps({
     viewId: {
         type: Number,

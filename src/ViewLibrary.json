@@ -45,7 +45,6 @@
       },
         "style":{
           "width": "100%",
-          "height": "100%",
           "margin-Top": "0px"
         }
       
@@ -160,15 +159,9 @@
       "content":{
         "label": "Input"
       },
-      "htmlattributes": {
-       
-      },
       "properties":{
         "showLabelInField": false,
-        "rules":[
-
-        ]
-
+        "showLabelBefore": true
       },
       "specifications": {
         "data-atomic": true
@@ -188,8 +181,11 @@
       "icon": "Checkbox.svg", 
       "tag": "component:CheckBoxComponent",
       "type": "viewdefinition:Form:CheckboxComponent",
-      "htmlattributes": {
+      "content":{
         "label": "Checkbox"
+      },
+      "htmlattributes": {
+        
       },
       "specifications": {
         "data-atomic": true
@@ -251,6 +247,9 @@
       "icon":"ListItem.svg",
       "tag": "component:ListItemComponent",
       "type": "viewdefinition:Basic:ListItemComponent",
+      "style":{
+        "height": "50px"
+      },
       "htmlattributes": {
         "label": "List Item"
       },
@@ -375,11 +374,11 @@
           }
         }
       ],
-      "dataConfig": {
-      },
         "isRoutable": false,
         "appearance": {
-          "dense": true
+          "dense": true,
+          "alignment": "justify",
+          "isVertical": false
         },
         "modelValue": "First Tab"
     },
@@ -408,7 +407,10 @@
       "style":{
         "border-left": "5px solid black !important"
       },
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "content": 
+      {
+        "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
       "specifications": {
         "data-atomic": true
       }
@@ -430,7 +432,7 @@
       "tag": "component:HeadingComponent",
       "type": "viewdefinition:Typography:HeadingComponent",
       "content": {
-        "text" : "{{ components }}"
+        "text" : "Lorem ipsum!"
       },
       "style":{
         "width": "min-content",
@@ -464,7 +466,17 @@
       "name" : "Avatar",
       "tag" : "component:AvatarComponent",
       "type" : "viewdefinition:Basic:AvatarComponent",
-      "icon": "account_circle_24dp_FILL0_wght400_GRAD0_opsz24 (1)"
+      "style": {
+        
+      }
+    },
+    {
+      "type": "viewdefinition:Layout:DrawerComponent",
+      "name": "Drawer",
+      "tag": "component:DrawerComponent",
+      "specifications":{
+          "noOverrideStyle": true
+      }
     },
     {
       "name" : "Carousel",
@@ -492,12 +504,28 @@
     {
       "name" : "Dialog",
       "tag" : "component:DialogComponent",
-      "type" : "viewdefinition:Basic:DialogComponent"
+      "type" : "viewdefinition:Basic:DialogComponent",
+      "properties":{
+        "persistent": false,
+        "noescdismiss": false,
+        "nobackdropdismiss": true,
+        "noroutedismiss": true,
+        "autoclose": true,
+        "norefocus": true,
+        "nofocus": true,
+        "fullwidth": true,
+        "fulheight": true,
+        "maximized": false
+      }
     },
     {
       "name" : "Card",
       "tag" : "component:CardComponent",
-      "type" : "viewdefinition:Basic:CardComponent"
+      "type" : "viewdefinition:Basic:CardComponent",
+      "style":{
+        "height": "150px",
+        "width": "120px"
+      }
     },
     {
       "name" : "Badge",
@@ -510,7 +538,7 @@
       "tag": "component:ParagraphComponent",
       "type": "viewdefinition:Typography:ParagraphComponent",
       "content": {
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere."
+        "text": "<strong>123</strong>111"
       },
       "style": {
           "width": "max-content",
@@ -530,15 +558,7 @@
         "label": "Rich Text"
       }
     },
-    {
-      "name": "Dropdown Button",
-      "tag": "component:DropdownButtonComponent",
-      "icon": "Dropdown_Button.svg",
-      "type": "viewdefinition:Basic:DropdownButtonComponent",
-      "htmlattributes": {
-        "label": "Dropdown Button"
-      }
-    },
+
     
     {
       "name": "Button",
@@ -579,7 +599,7 @@
     },
     {
       "name": "Dropdown Menu",
-      "tag": "component:MenuComponent",
+      "tag": "component:DropdownMenuComponent",
       "type": "viewdefinition:Navigation:DropdownMenuComponent",
       "style":{
         "width": "max-content",

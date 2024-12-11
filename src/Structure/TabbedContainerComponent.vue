@@ -2,10 +2,10 @@
     <div v-bind="view?.htmlattributes" :style="view?.style" ref="viewRef">
         <div  v-if="view?.isRoutable == false || view?.isRoutable == undefined">
         <q-tabs
-       
+       :vertical="view?.appearance?.isVertical ?? false"
+       :align="view?.appearance?.alignment ?? 'left'"
         :content-class="view?.appearance?.contentClass ?? ''"
         :active-class="view?.appearance?.activeClass ?? ''"
-        :vertical="view?.appearance?.isVertical ?? false"
         :outside-arrows="view?.appearance?.outsideArrows ?? false"
         :mobile-arrows="view?.appearance?.mobileArrows ?? false"
         :breakpoint="view?.appearance?.breakpoint ?? ''"

@@ -1,6 +1,6 @@
 <template>
     <q-dialog
-    :model-value="view?.modelValue ?? false"
+    :model-value="view?.modelValue ?? true"
     dense
     :class="view?.class"
     :label="view?.content?.label ?? 'Button'"
